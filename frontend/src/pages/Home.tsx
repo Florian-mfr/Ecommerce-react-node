@@ -1,5 +1,5 @@
 import React from 'react'
-//import Product from '../components/Product'
+import { NavLink } from 'react-router-dom'
 import { IState as Props } from "../App"
 
 export interface IProps {
@@ -8,20 +8,22 @@ export interface IProps {
 
 const Home: React.FC<IProps> = ({ products }) => {
     return (
-        <>
-            <h1>Liste de produits</h1>
-            <ul>
+        <div className='home'>
+            <h1 className='home__tittle'>Liste de produits</h1>
+            <ul className='home__ul'>
                 {
                     products.map(product =>
-                        <li>
-                            <img src={product.img} alt={product.name} />
-                            <h2>{product.name}</h2>
-                            <p>{product.description}</p>
-                            <span>{product.price} €</span>
-                        </li>)
+                        <NavLink exact to={`/product/${product.id}`}>
+                            <li>
+                                <img src={product.img} alt={product.name} />
+                                <h2>{product.brand} <span>{product.name}</span></h2>
+                                <p>{product.price} €</p>
+                            </li>
+                        </NavLink>
+                    )
                 }
             </ul>
-        </>
+        </div>
     )
 }
 

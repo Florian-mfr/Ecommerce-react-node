@@ -11,7 +11,7 @@
 }
 
 $black: rgb(20, 20, 20);
-$white: rgb(245, 245, 245);
+$white: rgb(255, 255, 255);
 $grey: #a5a5a5;
 $primary: rgb(46, 107, 131);
 $green: rgb(44, 209, 187);
@@ -42,6 +42,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	box-sizing: border-box;
 }
 ol, ul {
 	list-style: none;
@@ -63,4 +64,5 @@ button {
 }
 a {
     color: $black;
+	text-decoration: none;
 }

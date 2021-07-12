@@ -1,17 +1,17 @@
 const products = [
     {
-        id: 0,
+        id: 11,
         brand: "JART",
         name: "Life",
-        img: "./media/skate1.jpg",
+        img: "../media/skate1.jpg",
         price: 45,
         description: "8.375 x 31.8 Matière: 7 plis d'érable Numéro d'article: 0266505",
     },
     {
-        id: 1,
+        id: 12,
         brand: "Pizza Skateboards",
         name: "Speedy",
-        img: "./media/skate2.jpg",
+        img: "../media/skate2.jpg",
         price: 50,
         description: "8 x 31.875 Matière: 7 plis d'érable Numéro d'article: 0261051",
     }

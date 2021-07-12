@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Account from './pages/Profile';
 import Signup from './pages/Signup';
+import Product from './pages/Product'
 
 export interface IState {
   product: {
@@ -23,17 +24,20 @@ export interface IState {
 
 const App: React.FC = () => {
 
-  const [products, setProducts] = useState<IState['product']>(Products)
+  const [products] = useState<IState['product']>(Products)
+
+  
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
         <Switch>
           <Route path="/" exact render={() => <Home products={products} />} />
-          <Route path="/cart" exact render={() => <Cart />} />
-          <Route path="/account" exact render={() => <Account />} />
-          <Route path="/login" exact render={() => <Login />} />
-          <Route path="/signin" exact render={() => <Signup />} />
+          <Route path="/cart" render={() => <Cart />} />
+          <Route path="/account" render={() => <Account />} />
+          <Route path="/login" render={() => <Login />} />
+          <Route path="/signin" render={() => <Signup />} />
+          <Route path="/product/:id" render={() => <Product product={products} />} />
         </Switch>
       </BrowserRouter>
     </div>
