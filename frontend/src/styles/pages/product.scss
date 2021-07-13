@@ -1,9 +1,10 @@
 .product {
     @include flex-center;
-    padding-top: 70px;
+    padding-top: 80px;
     .product__img {
         @include flex-center;
         height: 100%;
+        margin: 0 10px;
     }
     .product__info {
         display: flex;
@@ -11,6 +12,7 @@
         align-items: flex-start;
         flex-direction: column;
         width: 50%;
+        margin: 0 10px;
         h2 {
             margin: 5px 0 30px;
             font-size: 30px;

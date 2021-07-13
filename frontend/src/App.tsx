@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios'
+
 import Navbar from './components/Navbar';
-import Products from './products';
 
 //Pages
 import Cart from './pages/Cart';
@@ -24,7 +25,18 @@ export interface IState {
 
 const App: React.FC = () => {
 
-  const [products] = useState<IState['product']>(Products)
+  const [products, setProducts] = useState<IState['product']>([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const {data} = await axios.get("http://localhost:5000/api/products")
+      setProducts(data.products)
+    }
+    fetchData()
+    return () => {
+
+    }
+  }, [])
 
   
   return (
