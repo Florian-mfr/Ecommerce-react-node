@@ -13,8 +13,8 @@ const Home: React.FC<IProps> = ({ products }) => {
             <ul className='home__ul'>
                 {
                     products.map(product =>
-                        <NavLink exact to={`/product/${product.id}`}>
-                            <li>
+                        <NavLink exact to={`/product/${product.id}`} key={product.id}>
+                            <li >
                                 <img src={product.img} alt={product.name} />
                                 <h2>{product.brand} <span>{product.name}</span></h2>
                                 <p>{product.price} €</p>
