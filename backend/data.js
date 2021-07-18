@@ -1,5 +1,5 @@
 export default {
-    products : [
+    products: [
         {
             id: 1,
             brand: "JART",
@@ -33,4 +33,4 @@ export default {
             description: "Dureté de la roue: 101A Diamètre: 48mm - Numéro d'article: 0135469",
         }
     ]
-} 
+}

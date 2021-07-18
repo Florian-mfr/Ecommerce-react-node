@@ -1,31 +1,53 @@
-import React from 'react'
-import { IState as Props } from "../App"
+import React, { useEffect } from 'react'
+import { ProductType } from "../pages/Home"
 
-export interface IProps {
-    products: Props["product"]
+// state
+import { detailProducts } from "../state/action-creators/index"
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../state/reducers';
+
+interface State {
+    loading: boolean
+    product: ProductType['product']
 }
 
-const Product: React.FC<Props> = ({ product }) => {
+const Product: React.FC = () => {
     const url = window.location.href.split('/')
-    const id = parseInt(url[4])
-    const index = product.findIndex(product => product.id === id)
-    const productToDisplay = product[index]
+    const productId = parseInt(url[4])
+
+    const productDetail: State = useSelector((state: RootState) => state.productDetail)
+    const { loading, product } = productDetail;
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(detailProducts(productId));
+        return () => {
+            //
+        };
+    }, [dispatch, productId]);
+    console.log(productDetail)
 
     return (
         <div className='product'>
-            <img src={productToDisplay.img} alt="product" className='product__img' />
-            <div className='product__info'>
-                <h2>{productToDisplay.brand} <span>{productToDisplay.name}</span></h2>
-                <p>{productToDisplay.description}</p>
-                <p>{productToDisplay.price} €</p>
-                <button>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Ajouter au panier
-                </button>
-            </div>
+            {!loading && (
+                <>
+                    <img src={product.img} alt="product" className='product__img' />
+                    <div className='product__info'>
+                        <h2>{product.brand} <span>{product.name}</span></h2>
+                        <p>{product.description}</p>
+                        <p>{product.price} €</p>
+                        <button>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </>
+
+            )}
+
         </div>
     )
 }

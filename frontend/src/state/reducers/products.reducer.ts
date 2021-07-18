@@ -1,16 +1,24 @@
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
 
-
-const initialState = {};
-
-const reducer = (state = initialState, action: Action) => {
+export const productsListReducer = (state = { loading: true, products: [] }, action: Action) => {
     switch (action.type) {
+        case ActionType.WAITING_PRODUCTS:
+            return { loading: true }
         case ActionType.GET_PRODUCTS:
-            return action.payload
+            return { loading: false, products: action.payload }
         default:
             return state
     }
 }
 
-export default reducer;
+export const productDetailReducer = (state = { loading: true, product: {} }, action: Action) => {
+    switch(action.type) {
+        case ActionType.WAITING_ONE_PRODUCT:
+            return { loading: true }
+        case ActionType.GET_ONE_PRODUCT:
+            return { loading: false, product: action.payload }
+        default:
+            return state
+    }
+}
